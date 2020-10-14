@@ -9,11 +9,15 @@ namespace EnthusiasticMoose
             Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine();
-            MooseSays();
+            MooseSays("H I, I'M  E N T H U S I A S T I C !");
+
+            // As a question
+            bool isTrue = MooseAsks("Is Canada real?");
+            Console.WriteLine(isTrue);
         }
-        static void MooseSays()
+        static void MooseSays(string message)
         {
-            Console.WriteLine(@"
+            Console.WriteLine($@"
                                        _.--^^^--,
                                     .'          `\
   .-^^^^^^-.                      .'              |
@@ -30,7 +34,7 @@ namespace EnthusiasticMoose
                '-'    | /       \ |
                       |  .-. .-.  |
                       \ / o| |o \ /
-                       |   / \   |    H I, I'M  E N T H U S I A S T I C !
+                       |   / \   |    {message}
                       / `^`   `^` \
                      /             \
                     | '._.'         \
@@ -41,6 +45,27 @@ namespace EnthusiasticMoose
                       \ \'._  ` '_.'
                        `^^` `^^^`
             ");
+        }
+
+        static bool MooseAsks(string question)
+        {
+            Console.Write($"{question} (Y/N): ");
+            string answer = Console.ReadLine().ToLower();
+
+            while (answer != "y" && answer != "n")
+            {
+                Console.Write($"{question} (Y/N): ");
+                answer = Console.ReadLine().ToLower();
+            }
+
+            if (answer == "y")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     };
 };
